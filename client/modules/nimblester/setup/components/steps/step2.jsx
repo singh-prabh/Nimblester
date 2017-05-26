@@ -1,45 +1,41 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
-import $ from 'jquery';
 
-class Step1 extends Component {
+class Step2 extends Component {
     constructor(props) {
         super(props);
-
         this.submit = this.submitForm.bind(this);
     }
 
-    componentDidMount() {
-        $('select').material_select();
-    }
-
     render() {
-        return (
+        return(
             <div className="row">
                 <div className="col s5 offset-s4">
-                    <h5 className="center-align setup-title">Shop info</h5>
+                    <h5 className="center-align setup-title">Create new user</h5>
                     <div className="card">
                         <div className="card-content">
                             <div className="row">
                                 <div className="col s12">
                                     <form onSubmit={this.submit}>
                                         <div className="input-field">
-                                            <input required="required" ref="shopname" id="shopname" type="text"
+                                            <input required="required" ref="name" id="name" type="text"
                                                    className="validate"/>
-                                            <label htmlFor="shopname">Shop name</label>
+                                            <label htmlFor="name">Name</label>
                                         </div>
                                         <div className="input-field">
-                                            <input required="required" ref="domain" id="domain" type="text"
+                                            <input required="required" ref="email" id="email" type="email"
                                                    className="validate"/>
-                                            <label htmlFor="domain">Domain name</label>
+                                            <label htmlFor="email">Email</label>
                                         </div>
                                         <div className="input-field">
-                                            <select required="required" ref="currency">
-                                                <option value="" disabled selected>Choose your currency</option>
-                                                <option value="EUR">EUR</option>
-                                                <option value="USD">USD</option>
-                                            </select>
-                                            <label>Currency</label>
+                                            <input required="required" ref="password" id="password" type="password"
+                                                   className="validate"/>
+                                            <label htmlFor="password">Password</label>
+                                        </div>
+                                        <div className="input-field">
+                                            <input required="required" ref="password2" id="password2" type="password"
+                                                   className="validate"/>
+                                            <label htmlFor="password2">Confirm your password</label>
                                         </div>
                                         <button className="btn waves-effect waves-light" type="submit" name="action">
                                             Submit
@@ -52,22 +48,14 @@ class Step1 extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
     submitForm(e) {
         e.preventDefault();
-        Meteor.call('insert_shopinfo', {
-            domain: this.refs.domain.value,
-            shopname: this.refs.shopname.value,
-            currency: this.refs.currency.value
-        }, (err, res) => {
-            if (err) {
-                Materialize.toast(err, 4000)
-            } else {
-                FlowRouter.go('/setup/2');
-            }
-        });
+
     }
+
 }
-export default Step1;
+
+export default Step2;

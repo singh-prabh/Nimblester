@@ -6,3 +6,7 @@ body {
 .setup {
     padding-top: 50px;
 }
+
+.setup .setup-title {
+    color: #fcfcfc;
+}
