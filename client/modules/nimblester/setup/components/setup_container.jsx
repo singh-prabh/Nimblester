@@ -7,9 +7,9 @@ class SetupContainer extends Component {
 
     render() {
         return (
-          <div>
-              {this.props.main}
-          </div>
+            <div className="container setup">
+                {this.props.main}
+            </div>
         );
     }
 }
