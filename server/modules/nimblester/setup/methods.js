@@ -1,12 +1,19 @@
 import {Meteor} from 'meteor/meteor';
-import {ShopInfo} from '/imports/collections/nimblester/shopinfo';
+import {NimbleConfigData} from '/imports/collections/nimblester/nimble_config_data';
 
 Meteor.methods({
     'insert_shopinfo'({domain, shopname, currency}) {
-        ShopInfo.insert({
-            domain: domain,
-            shopname: shopname,
-            currency: currency
-        });
+        NimbleConfigData.rawCollection().insertMany([{
+            key: "domain_name",
+            value: domain
+        }, {
+            key: "shopname",
+            value: shopname
+        }, {
+            key: "currency",
+            value: currency
+        }]);
+
+        NimbleConfigData.rawCollection().createIndex({"key": 1}, {unique: true})
     }
 });
