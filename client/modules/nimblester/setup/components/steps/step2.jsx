@@ -63,7 +63,7 @@ class Step2 extends Component {
                 if (err) {
                     Materialize.toast(err, 4000);
                 } else {
-                    FlowRouter.go('/control');
+                    FlowRouter.go('/controlroom');
                 }
             });
         } else {
