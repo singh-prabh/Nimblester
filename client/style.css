@@ -3,10 +3,8 @@ body {
     background-color: #dbd6d6;
 }
 
-.setup {
-    padding-top: 50px;
-}
-
-.setup .setup-title {
-    color: #fcfcfc;
+.preloader-wrapper {
+    position:absolute;
+    top:50%;
+    left:50%;
 }
