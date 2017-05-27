@@ -34,8 +34,8 @@ class Step1 extends Component {
                                             <label htmlFor="domain">Domain name</label>
                                         </div>
                                         <div className="input-field">
-                                            <select required="required" ref="currency">
-                                                <option value="" disabled selected>Choose your currency</option>
+                                            <select defaultValue="" required="required" ref="currency">
+                                                <option value="" disabled>Choose your currency</option>
                                                 <option value="EUR">EUR</option>
                                                 <option value="USD">USD</option>
                                             </select>

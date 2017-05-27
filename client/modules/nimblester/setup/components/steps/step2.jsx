@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
+import $ from 'jquery';
 
 class Step2 extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Step2 extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="row">
                 <div className="col s5 offset-s4">
                     <h5 className="center-align setup-title">Create new user</h5>
@@ -53,7 +54,21 @@ class Step2 extends Component {
 
     submitForm(e) {
         e.preventDefault();
-
+        if (this.refs.password.value === this.refs.password2.value) {
+            Meteor.call('insert_newadmin', {
+                name: this.refs.name.value,
+                email: this.refs.email.value,
+                password: this.refs.password.value
+            }, (err, res) => {
+                if (err) {
+                    Materialize.toast(err, 4000);
+                } else {
+                    FlowRouter.go('/control');
+                }
+            });
+        } else {
+            Materialize.toast("Passwords are not the same", 4000);
+        }
     }
 
 }
