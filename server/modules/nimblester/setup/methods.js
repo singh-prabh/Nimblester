@@ -1,5 +1,5 @@
 import {Meteor} from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base'
+import {Accounts} from 'meteor/accounts-base';
 
 import {NimbleConfigData} from '/imports/collections/nimblester/nimble_config_data';
 
@@ -20,13 +20,13 @@ Meteor.methods({
     },
 
     'insert_newadmin'({name, email, password}) {
-        Accounts.createUser({
+        const new_id = Accounts.createUser({
             email: email,
             password: password,
             profile: {
-                name: name,
-                admin: 1
+                name: name
             }
         });
+        Roles.addUsersToRoles(new_id, 'admin');
     }
 });
