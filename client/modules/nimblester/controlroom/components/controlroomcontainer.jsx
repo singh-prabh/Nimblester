@@ -55,7 +55,6 @@ class ControlRoomContainer extends Component {
                 <div>
                     <SideNav/>
                     <div className="container">
-                        <a className="btn-floating btn-large waves-effect waves-light red sidetoggle" data-activates="slide-out"><i className="material-icons">menu</i></a>
                         {this.props.main}
                     </div>
                 </div>
