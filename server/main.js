@@ -1,5 +1,10 @@
-import { Meteor } from 'meteor/meteor';
-
+import {Meteor} from 'meteor/meteor';
+import {ProductsCollection} from '/imports/collections/nimblester/products';
 Meteor.startup(() => {
-    console.log();
+    ProductsCollection.insert({
+        name: 'testproduct',
+        description: 'lorum ipsum solor idor',
+        price: '10',
+        image: 'https://placehold.it/350x350'
+    });
 });
