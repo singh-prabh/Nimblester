@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
 
 import Login from './login';
+import SideNav from './sidenav';
 
 class ControlRoomContainer extends Component {
     constructor(props) {
@@ -12,12 +13,13 @@ class ControlRoomContainer extends Component {
 
     componentWillMount() {
         if (Meteor.userId()) {
-
             Meteor.call('checkifadmin', {_id: Meteor.userId()}, (error, results) => {
                 if (results) {
                     this.setState({loggedin: true, ready: true});
                 }
             });
+        } else {
+            this.setState({ready: true});
         }
     }
 
@@ -50,8 +52,12 @@ class ControlRoomContainer extends Component {
             )
         } else {
             return (
-                <div className="container">
-                    {this.props.main}
+                <div>
+                    <SideNav/>
+                    <div className="container">
+                        <a className="btn-floating btn-large waves-effect waves-light red sidetoggle" data-activates="slide-out"><i className="material-icons">menu</i></a>
+                        {this.props.main}
+                    </div>
                 </div>
             );
         }
