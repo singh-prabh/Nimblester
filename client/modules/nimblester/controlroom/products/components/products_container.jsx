@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Meteor} from 'meteor/meteor';
 import {createContainer} from 'meteor/react-meteor-data';
-import _ from 'lodash';
 
 import {ProductsCollection} from '/imports/collections/nimblester/products';
 import SingleProduct from './single_product';
@@ -32,9 +31,6 @@ class ProductsContainer extends Component {
         );
     }
 
-    ShowAllProducts() {
-
-    }
 }
 
 export default ProductsContainer = createContainer(props => {
