@@ -1,3 +1,9 @@
 .control-products-action {
     color: #212121;
+    cursor: pointer;
+}
+
+.home-editor {
+    background-color: #ffffff;
+    min-height: 325px;
 }

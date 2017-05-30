@@ -17,6 +17,7 @@ class SideNav extends Component {
             <div>
                 <ul id="products_dropdown" className="dropdown-content">
                     <li><a href="/controlroom/products">All products</a></li>
+                    <li><a href="/controlroom/product/new">Add products</a></li>
                 </ul>
                 <nav>
                     <ul id="slide-out" className="side-nav">
