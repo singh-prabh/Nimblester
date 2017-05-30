@@ -7,3 +7,33 @@
     background-color: #ffffff;
     min-height: 325px;
 }
+
+.control-product-image-holder{
+    height:400px;
+    width:400px;
+    float:left;
+    cursor:pointer;
+}
+.control-product-image{
+    height:400px;
+    width:400px;
+}
+.overlay{
+    height:400px;
+    width:400px;
+    position:absolute;
+    background: rgba(0, 0, 0, 0.5);
+    text-align:center;
+    display:none;
+}
+.overlay p{
+    color:white;
+    line-height:400px;
+    font-size:80px;
+    margin:0;
+}
+
+.control-product-img-input {
+    display:none;
+}
+
