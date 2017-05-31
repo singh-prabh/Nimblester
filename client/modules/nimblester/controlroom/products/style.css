@@ -42,3 +42,13 @@
     margin: 1.14rem 0 0.912rem 0;
 }
 
+.attr-text {
+    float:left;
+    padding-right: 10px;
+}
+
+.attr-button {
+    height: 26px;
+    width: 26px;
+}
+

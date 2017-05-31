@@ -5,6 +5,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {stateToHTML} from 'draft-js-export-html';
 import $ from 'jquery';
 import {FlowRouter} from 'meteor/kadira:flow-router';
+import ProductDetail from './product_detail';
 
 class NewProduct extends Component {
     constructor(props) {
@@ -74,6 +75,7 @@ class NewProduct extends Component {
                         </div>
                     </div>
                 </div>
+                <ProductDetail/>
             </div>
         );
     }
