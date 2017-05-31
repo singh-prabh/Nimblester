@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Meteor} from 'meteor/meteor';
 import {Editor} from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {stateToHTML} from 'draft-js-export-html';
@@ -32,7 +33,8 @@ class NewProduct extends Component {
                         <h4>Add a new product</h4>
                     </div>
                     <div className="col s3">
-                        <button onClick={this.saveProduct.bind(this)} className="btn waves-effect waves-light save-product-button" name="action">
+                        <button onClick={this.saveProduct.bind(this)}
+                                className="btn waves-effect waves-light save-product-button" name="action">
                             Save
                             <i className="material-icons right">send</i>
                         </button>
@@ -54,7 +56,7 @@ class NewProduct extends Component {
                             <div className="col s12">
                                 <h5>Product title</h5>
                                 <div className="input-field">
-                                    <input ref="product-title" id="product-title" type="text" className="validate"/>
+                                    <input ref="productTitle" id="product-title" type="text" className="validate"/>
                                 </div>
                             </div>
                         </div>
@@ -101,8 +103,12 @@ class NewProduct extends Component {
         this.setState({editorState: stateToHTML(contentState.getCurrentContent())});
     }
 
-    saveProduct(e) {
-        console.log(e);
+    saveProduct() {
+        if (!$.trim(this.refs.productTitle.value)) {
+            Materialize.toast('Title not set', 4000);
+        } else {
+            Meteor.call('new_product', {image: this.state.productImage, title: this.refs.productTitle.value, description: this.state.editorState});
+        }
     }
 
 
