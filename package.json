@@ -8,6 +8,7 @@
     "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.2",
     "draft-js": "^0.10.1",
+    "draft-js-export-html": "^0.5.4",
     "jquery": "^2.2.4",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "~0.2.4",
