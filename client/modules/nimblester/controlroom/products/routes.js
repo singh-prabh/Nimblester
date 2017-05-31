@@ -4,7 +4,8 @@ import {mount} from 'react-mounter';
 
 import ControlRoomContainer from './../components/controlroomcontainer';
 import ProductsContainer from './components/products_container';
-import NewProduct from './components/new_product';
+import NewProduct from './new_product/components/new_product';
+import EditProduct from './edit_product/components/edit_product';
 
 FlowRouter.route('/controlroom/products', {
     name: 'controlroom products',
@@ -20,6 +21,15 @@ FlowRouter.route('/controlroom/product/new', {
     action() {
         mount(ControlRoomContainer, {
             main: <NewProduct/>,
+        });
+    },
+});
+
+FlowRouter.route('/controlroom/product/edit/:id', {
+    name: 'controlroom edit products',
+    action(params, queryParams) {
+        mount(ControlRoomContainer, {
+            main: <EditProduct productId={params.id} />,
         });
     },
 });

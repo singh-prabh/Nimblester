@@ -14,7 +14,7 @@ class SingleProduct extends Component {
                         <img src={this.props.product.image}/>
                         <span className="card-title">{this.props.product.name}</span>
                     </div>
-                    <div dangerouslySetInnerHTML={{__html: this.props.product.description}} className="card-content">
+                    <div dangerouslySetInnerHTML={{__html: this.props.product.description.substr(0, 100)}} className="card-content">
                     </div>
                     <div className="card-action">
                         <a href={'/controlroom/product/edit/' + this.props.product._id}> <i
