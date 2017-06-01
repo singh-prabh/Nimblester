@@ -2,7 +2,7 @@ import React from 'react';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {mount} from 'react-mounter';
 
-import ControlRoomContainer from './../components/controlroomcontainer';
+import ControlRoomContainer from './../../components/controlroomcontainer';
 import EditProduct from './components/edit_product';
 
 FlowRouter.route('/controlroom/product/edit/:id', {
