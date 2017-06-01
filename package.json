@@ -11,7 +11,7 @@
     "draft-js-export-html": "^0.5.4",
     "jquery": "^2.2.4",
     "lodash": "^4.17.4",
-    "meteor-node-stubs": "~0.2.4",
+    "meteor-node-stubs": "^0.2.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-draft-wysiwyg": "^1.10.0",
