@@ -107,18 +107,43 @@ class NewProduct extends Component {
     }
 
     saveProduct() {
+        this.collectAttributes();
+        return;
         if (!$.trim(this.refs.productTitle.value)) {
             Materialize.toast('Title not set', 4000);
         } else {
-            Meteor.call('new_product', {image: this.state.productImage, title: this.refs.productTitle.value, description: this.state.editorState}, (err, res) => {
+            Meteor.call('new_product', {
+                image: this.state.productImage,
+                title: this.refs.productTitle.value,
+                description: this.state.editorState
+            }, (err, res) => {
                 console.log(res);
-                if(err) {
+                if (err) {
                     Materialize.toast(err, 4000);
                 } else {
                     FlowRouter.go('/controlroom/product/edit/' + res);
                 }
             });
         }
+    }
+
+    collectAttributes() {
+        let data = [];
+        let name = "";
+
+        $('.attribute-inputs input').each((index, element) => {
+           if(index === 0 || index % 2 === 0) {
+               name = element.value;
+           } else {
+               data.push({
+                   name     : name,
+                   value    : element.value
+               });
+           }
+
+            console.log("index: " + index + " element: " + element.value);
+        });
+        console.log(data);
     }
 
 

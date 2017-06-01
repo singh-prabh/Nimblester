@@ -7,9 +7,6 @@ class Attribute extends Component {
         this.state = {inputs: [0]};
     }
 
-    componentDidMount() {
-
-    }
 
     render() {
         return (
@@ -23,7 +20,7 @@ class Attribute extends Component {
                     </div>
                 </div>
                 <div id="dynamicInput">
-                    {this.state.inputs.map(input => <div key={input} className="row">
+                    {this.state.inputs.map(input => <div key={input} className="row attribute-inputs">
                         <div className="col s5"><label htmlFor="attribute-name">Attribute name</label><input
                             id="attribute-name" type="text" /></div>
                         <div className="col s5"><label htmlFor="attribute-value">Attribute value</label><input
