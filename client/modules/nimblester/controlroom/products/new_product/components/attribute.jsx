@@ -12,7 +12,6 @@ class Attribute extends Component {
     }
 
     render() {
-        let i = 1;
         return (
             <div>
                 <div className="row">
@@ -24,11 +23,11 @@ class Attribute extends Component {
                     </div>
                 </div>
                 <div id="dynamicInput">
-                    {this.state.inputs.map(input => <div className="row">
+                    {this.state.inputs.map(input => <div key={input} className="row">
                         <div className="col s5"><label htmlFor="attribute-name">Attribute name</label><input
-                            id="attribute-name" type="text" key={'name-' + i}/></div>
+                            id="attribute-name" type="text" /></div>
                         <div className="col s5"><label htmlFor="attribute-value">Attribute value</label><input
-                            id="attribute-value" type="text" key={'value-' + i}/></div>
+                            id="attribute-value" type="text" /></div>
                         <div className="col s2 delete-input-button">
                         <a onClick={ () => this.deleteInput(input) }
                            className="btn-floating waves-effect waves-light blue attr-tex"><i
