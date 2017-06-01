@@ -4,10 +4,15 @@ import $ from 'jquery';
 class Attribute extends Component {
     constructor(props) {
         super(props);
-        this.state = {inputs: ['input-0']};
+        this.state = {inputs: [0]};
+    }
+
+    componentDidMount() {
+
     }
 
     render() {
+        let i = 1;
         return (
             <div>
                 <div className="row">
@@ -20,10 +25,15 @@ class Attribute extends Component {
                 </div>
                 <div id="dynamicInput">
                     {this.state.inputs.map(input => <div className="row">
-                        <div className="col s6"><label htmlFor="attribute-name">Attribute name</label><input
-                            id="attribute-name" type="text" key={Math.random()}/></div>
-                        <div className="col s6"><label htmlFor="attribute-value">Attribute value</label><input
-                            id="attribute-value" type="text" key={Math.random()}/></div>
+                        <div className="col s5"><label htmlFor="attribute-name">Attribute name</label><input
+                            id="attribute-name" type="text" key={'name-' + i}/></div>
+                        <div className="col s5"><label htmlFor="attribute-value">Attribute value</label><input
+                            id="attribute-value" type="text" key={'value-' + i}/></div>
+                        <div className="col s2 delete-input-button">
+                        <a onClick={ () => this.deleteInput(input) }
+                           className="btn-floating waves-effect waves-light blue attr-tex"><i
+                            className="material-icons">delete</i></a>
+                        </div>
                     </div>)}
                 </div>
 
@@ -32,8 +42,14 @@ class Attribute extends Component {
     }
 
     appendInput() {
-        let newInput = `input-${this.state.inputs.length}`;
+        let newInput = this.state.inputs.length;
         this.setState({inputs: this.state.inputs.concat([newInput])});
+    }
+
+    deleteInput(e) {
+        let arr = this.state.inputs;
+        delete arr[e];
+        this.setState({inputs: arr});
     }
 
 }

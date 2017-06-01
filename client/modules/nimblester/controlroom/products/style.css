@@ -52,3 +52,16 @@
     width: 26px;
 }
 
+.delete-input-button {
+    opacity: 0.1;
+    -webkit-transition:  0.25s;
+    -moz-transition: 0.25s;
+    -ms-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+
+.delete-input-button:hover {
+    opacity: 1;
+}
+
