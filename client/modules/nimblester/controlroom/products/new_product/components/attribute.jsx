@@ -13,8 +13,9 @@ class Attribute extends Component {
                 <div className="row">
                     <div className="col s12">
                         <h5 className="attr-text">Attributes</h5>
-                        <a onClick={ () => this.appendInput() } className="btn-floating btn-large waves-effect waves-light red attr-text attr-button"><i className="material-icons">add</i></a>
-                        <div className="divider"></div>
+                        <a onClick={ () => this.appendInput() }
+                           className="btn-floating waves-effect waves-light red attr-text"><i
+                            className="material-icons">add</i></a>
                     </div>
                 </div>
                 <div id="dynamicInput">
