@@ -107,15 +107,15 @@ class NewProduct extends Component {
     }
 
     saveProduct() {
-        this.collectAttributes();
-        return;
+
         if (!$.trim(this.refs.productTitle.value)) {
             Materialize.toast('Title not set', 4000);
         } else {
             Meteor.call('new_product', {
                 image: this.state.productImage,
                 title: this.refs.productTitle.value,
-                description: this.state.editorState
+                description: this.state.editorState,
+                attributes: this.collectAttributes()
             }, (err, res) => {
                 console.log(res);
                 if (err) {
@@ -132,18 +132,18 @@ class NewProduct extends Component {
         let name = "";
 
         $('.attribute-inputs input').each((index, element) => {
-           if(index === 0 || index % 2 === 0) {
-               name = element.value;
-           } else {
-               data.push({
-                   name     : name,
-                   value    : element.value
-               });
-           }
-
-            console.log("index: " + index + " element: " + element.value);
+            if (index === 0 || index % 2 === 0) {
+                name = element.value;
+            } else {
+                data.push({
+                    name: name,
+                    value: element.value
+                });
+            }
         });
-        console.log(data);
+
+        return data;
+
     }
 
 
