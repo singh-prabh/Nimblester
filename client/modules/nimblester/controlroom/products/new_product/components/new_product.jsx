@@ -4,6 +4,8 @@ import {Editor} from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {stateToHTML} from 'draft-js-export-html';
 import $ from 'jquery';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import ProductDetail from './product_detail';
 
 class NewProduct extends Component {
     constructor(props) {
@@ -73,6 +75,7 @@ class NewProduct extends Component {
                         </div>
                     </div>
                 </div>
+                <ProductDetail/>
             </div>
         );
     }
@@ -104,11 +107,43 @@ class NewProduct extends Component {
     }
 
     saveProduct() {
+
         if (!$.trim(this.refs.productTitle.value)) {
             Materialize.toast('Title not set', 4000);
         } else {
-            Meteor.call('new_product', {image: this.state.productImage, title: this.refs.productTitle.value, description: this.state.editorState});
+            Meteor.call('new_product', {
+                image: this.state.productImage,
+                title: this.refs.productTitle.value,
+                description: this.state.editorState,
+                attributes: this.collectAttributes()
+            }, (err, res) => {
+                console.log(res);
+                if (err) {
+                    Materialize.toast(err, 4000);
+                } else {
+                    FlowRouter.go('/controlroom/product/edit/' + res);
+                }
+            });
         }
+    }
+
+    collectAttributes() {
+        let data = [];
+        let name = "";
+
+        $('.attribute-inputs input').each((index, element) => {
+            if (index === 0 || index % 2 === 0) {
+                name = element.value;
+            } else {
+                data.push({
+                    name: name,
+                    value: element.value
+                });
+            }
+        });
+
+        return data;
+
     }
 
 
