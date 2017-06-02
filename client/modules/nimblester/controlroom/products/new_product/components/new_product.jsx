@@ -27,7 +27,6 @@ class NewProduct extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <div className="row">
@@ -75,7 +74,7 @@ class NewProduct extends Component {
                         </div>
                     </div>
                 </div>
-                <ProductDetail/>
+                <ProductDetail ref="detail"/>
             </div>
         );
     }
@@ -115,7 +114,9 @@ class NewProduct extends Component {
                 image: this.state.productImage,
                 title: this.refs.productTitle.value,
                 description: this.state.editorState,
-                attributes: this.collectAttributes()
+                attributes: this.collectAttributes(),
+                price: this.collectPrice(),
+                stock: this.collectStock()
             }, (err, res) => {
                 console.log(res);
                 if (err) {
@@ -143,7 +144,28 @@ class NewProduct extends Component {
         });
 
         return data;
+    }
 
+    collectPrice() {
+        let data;
+
+        data = {
+            price: this.refs.detail.refs.price.refs.price.value,
+            taxable: $('#taxable').is(":checked")
+        };
+
+        return data;
+    }
+
+    collectStock() {
+        let data;
+
+        data = {
+            quantity: this.refs.detail.refs.stock.refs.quantity.value,
+            instock: $('#instock').is(":checked")
+        };
+
+        return data;
     }
 
 

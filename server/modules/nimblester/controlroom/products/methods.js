@@ -7,14 +7,15 @@ Meteor.methods({
             ProductsCollection.remove({_id: _id})
         }
     },
-    'new_product'({image, title, description, attributes}) {
+    'new_product'({image, title, description, attributes, price, stock}) {
         if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
             return ProductsCollection.insert({
                 name: title,
                 description: description,
-                price: '10',
                 image: image,
-                attributes: attributes
+                attributes: attributes,
+                price: price,
+                stock: stock
             });
         }
     }
