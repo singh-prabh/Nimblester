@@ -21,10 +21,10 @@ class Attribute extends Component {
                 </div>
                 <div id="dynamicInput">
                     {this.state.inputs.map(input => <div key={input} className="row attribute-inputs">
-                        <div className="col s5"><label htmlFor="attribute-name">Attribute name</label><input
-                            id="attribute-name" type="text" /></div>
-                        <div className="col s5"><label htmlFor="attribute-value">Attribute value</label><input
-                            id="attribute-value" type="text" /></div>
+                        <div className="col s5"><label htmlFor={'attr-name' + input}>Attribute name</label><input
+                            id={'attr-name' + input} type="text" className="validate" /></div>
+                        <div className="col s5"><label htmlFor={'attr-value' + input}>Attribute value</label><input
+                            id={'attr-value' + input} type="text" className="validate" /></div>
                         <div className="col s2 delete-input-button">
                         <a onClick={ () => this.deleteInput(input) }
                            className="btn-floating waves-effect waves-light blue attr-tex"><i
