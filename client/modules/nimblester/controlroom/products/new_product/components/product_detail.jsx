@@ -3,6 +3,7 @@ import $ from 'jquery';
 
 import Attribute from './attribute';
 import Price from './price';
+import Stock from './stock';
 
 class ProductDetail extends Component {
     constructor(props) {
@@ -29,8 +30,8 @@ class ProductDetail extends Component {
                     </div>
                     <div className="row">
                         <div id="attributes" className="col s12"><Attribute/></div>
-                        <div id="price" className="col s12"><Price/></div>
-                        <div id="stock" className="col s12">Stock</div>
+                        <div id="price" className="col s12"><Price ref="price"/></div>
+                        <div id="stock" className="col s12"><Stock ref="stock"/></div>
                         <div id="test4" className="col s12">Category</div>
                     </div>
                 </div>
