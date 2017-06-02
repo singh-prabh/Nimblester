@@ -106,8 +106,6 @@ class NewProduct extends Component {
     }
 
     saveProduct() {
-        console.log(this.collectStock());
-        return;
 
         if (!$.trim(this.refs.productTitle.value)) {
             Materialize.toast('Title not set', 4000);
@@ -117,7 +115,8 @@ class NewProduct extends Component {
                 title: this.refs.productTitle.value,
                 description: this.state.editorState,
                 attributes: this.collectAttributes(),
-                price: this.collectPrice()
+                price: this.collectPrice(),
+                stock: this.collectStock()
             }, (err, res) => {
                 console.log(res);
                 if (err) {
